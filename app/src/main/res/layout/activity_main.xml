@@ -1,0 +1,78 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="40dp"
+            android:text="Pioneer Bus Ticket Booking App"
+            android:textSize="35dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/homeSignIn"
+                android:layout_width="40dp"
+                android:layout_height="90dp"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/homesigninbtn"
+                android:text="sign in"
+                android:textColor="#000000" />
+
+            <Button
+                android:id="@+id/homeSignUp"
+                android:layout_width="40dp"
+                android:layout_height="90dp"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/homesignupbtn"
+                android:text="sign Up"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/homeBooking"
+                android:layout_width="40dp"
+                android:layout_height="90dp"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/homebookticket"
+                android:text="book ticket"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/homeSearch"
+                android:layout_width="40dp"
+                android:layout_height="90dp"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/homesearch"
+                android:text="Search Ticket"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

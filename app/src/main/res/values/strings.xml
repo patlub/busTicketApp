@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Bus Ticket</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_sign_up">Sign Up</string>
+    <string name="title_activity_sign_in">Sign In</string>
+    <string name="title_activity_booking">Book Ticket</string>
+    <string name="title_activity_searching">Ticket Searching</string>
+</resources>
