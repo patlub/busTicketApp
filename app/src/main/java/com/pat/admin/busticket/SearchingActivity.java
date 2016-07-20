@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +24,7 @@ public class SearchingActivity extends AppCompatActivity implements View.OnClick
     private EditText editTextSearch;
 
     private Button searchBtn;
-    private static final String REGISTER_URL = "http://192.168.43.134/BusTicket/search.php";
+    private static final String SEARCH_URL = "http://192.168.43.134/BusTicket/search.php";
 
     String myJSON;
     JSONArray jsonArray = null;
@@ -33,6 +32,7 @@ public class SearchingActivity extends AppCompatActivity implements View.OnClick
     private static final String TAG_NUMBER = "number";
     private static final String TAG_NAME = "name";
     private static final String TAG_ROUTE = "route";
+    private static final String TAG_SEAT = "seat";
     private static final String TAG_LEVEL = "level";
     private static final String TAG_DATE = "date";
     private static final String TAG_USER_ID = "user_id";
@@ -41,6 +41,8 @@ public class SearchingActivity extends AppCompatActivity implements View.OnClick
     private TextView ticketNameLabel;
     private TextView ticketRouteLabel;
     private TextView ticketRouteView;
+    private TextView ticketSeatLabel;
+    private TextView ticketSeatView;
     private TextView ticketLevelLabel;
     private TextView ticketdateLabel;
     private TextView ticketLevelView;
@@ -59,6 +61,8 @@ public class SearchingActivity extends AppCompatActivity implements View.OnClick
         ticketNameLabel = (TextView) findViewById(R.id.ticketNameLabel);
         ticketRouteView = (TextView) findViewById(R.id.ticketRoute);
         ticketRouteLabel = (TextView) findViewById(R.id.ticketRouteLabel);
+        ticketSeatView = (TextView) findViewById(R.id.ticketSeat);
+        ticketSeatLabel = (TextView) findViewById(R.id.ticketSeatLabel);
         ticketLevelView = (TextView) findViewById(R.id.ticketLevel);
         ticketLevelLabel = (TextView) findViewById(R.id.ticketLevelLabel);
         ticketdateView = (TextView) findViewById(R.id.ticketDate);
@@ -108,7 +112,7 @@ public class SearchingActivity extends AppCompatActivity implements View.OnClick
             protected String doInBackground(String... params) {
                 HashMap<String, String> data = new HashMap<String, String>();
                 data.put("ticketNumber", params[0]);
-                String result = ruc.sendPostRequest(REGISTER_URL, data);
+                String result = ruc.sendPostRequest(SEARCH_URL, data);
                 return result;
             }
         }
@@ -126,6 +130,7 @@ public class SearchingActivity extends AppCompatActivity implements View.OnClick
             String number = c.getString(TAG_NUMBER);
             String name = c.getString(TAG_NAME);
             String route = c.getString(TAG_ROUTE);
+            String seat = c.getString(TAG_SEAT);
             String level = c.getString(TAG_LEVEL);
             String date = c.getString(TAG_DATE);
             String user_id = c.getString(TAG_USER_ID);
@@ -133,18 +138,21 @@ public class SearchingActivity extends AppCompatActivity implements View.OnClick
             ticketNumberView.setText(number);
             ticketNameView.setText(name);
             ticketRouteView.setText(route);
+            ticketSeatView.setText(seat);
             ticketLevelView.setText(level);
             ticketdateView.setText(date);
 
             ticketNumberLabel.setVisibility(View.VISIBLE);
             ticketNameLabel.setVisibility(View.VISIBLE);
             ticketRouteLabel.setVisibility(View.VISIBLE);
+            ticketSeatLabel.setVisibility(View.VISIBLE);
             ticketLevelLabel.setVisibility(View.VISIBLE);
             ticketdateLabel.setVisibility(View.VISIBLE);
 
             ticketNumberView.setVisibility(View.VISIBLE);
             ticketNameView.setVisibility(View.VISIBLE);
             ticketRouteView.setVisibility(View.VISIBLE);
+            ticketSeatView.setVisibility(View.VISIBLE);
             ticketLevelView.setVisibility(View.VISIBLE);
             ticketdateView.setVisibility(View.VISIBLE);
 
@@ -158,12 +166,14 @@ public class SearchingActivity extends AppCompatActivity implements View.OnClick
         ticketNumberLabel.setVisibility(View.GONE);
         ticketNameLabel.setVisibility(View.GONE);
         ticketRouteLabel.setVisibility(View.GONE);
+        ticketSeatLabel.setVisibility(View.GONE);
         ticketLevelLabel.setVisibility(View.GONE);
         ticketdateLabel.setVisibility(View.GONE);
 
         ticketNumberView.setVisibility(View.GONE);
         ticketNameView.setVisibility(View.GONE);
         ticketRouteView.setVisibility(View.GONE);
+        ticketSeatView.setVisibility(View.GONE);
         ticketLevelView.setVisibility(View.GONE);
         ticketdateView.setVisibility(View.GONE);
 

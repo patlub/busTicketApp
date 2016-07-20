@@ -80,6 +80,24 @@
             android:visibility="gone" />
 
         <TextView
+            android:id="@+id/ticketSeatLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seat Number"
+            android:textAllCaps="true"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/ticketSeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp"
+            android:paddingTop="10dp"
+            android:visibility="gone" />
+
+        <TextView
             android:id="@+id/ticketLevelLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

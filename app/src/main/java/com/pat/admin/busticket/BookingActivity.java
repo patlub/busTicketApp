@@ -23,7 +23,7 @@ public class BookingActivity extends AppCompatActivity implements View.OnClickLi
     private Spinner spinnerLevel;
 
     private Button bookTicketBtn;
-    private static final String REGISTER_URL = "http://192.168.43.134/BusTicket/booking.php";
+    private static final String BOOKING_URL = "http://192.168.43.134/BusTicket/booking.php";
     private Spinner routeDropdown;
     private Spinner levelDropdown;
     private TextView computedPrice;
@@ -39,11 +39,10 @@ public class BookingActivity extends AppCompatActivity implements View.OnClickLi
         computedPrice = (TextView) findViewById(R.id.computePrice);
         routeDropdown = (Spinner) findViewById(R.id.routeSpinner);
         levelDropdown = (Spinner) findViewById(R.id.levelSpinner);
-
         String[] routeItems = new String[]{"Kampala to Kireka", "Ntinda to Kampala", "Kampala to Banda",
                 "Ntinda to Byeyogerere", "Nakawa to Kampala", "Kampala to Gayaza", "Zana to Kampala"};
+
         String[] levelItems = new String[]{"Single", "Double"};
-        String[] paymentItems = new String[]{"Mobile Money", "PayPal", "Credit Card"};
 
         ArrayAdapter<String> routeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, routeItems);
         routeDropdown.setAdapter(routeAdapter);
@@ -58,6 +57,7 @@ public class BookingActivity extends AppCompatActivity implements View.OnClickLi
 
         bookTicketBtn.setOnClickListener(this);
         spinnerRoute.setSelection(0,false);
+
         spinnerRoute.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
@@ -128,15 +128,12 @@ public class BookingActivity extends AppCompatActivity implements View.OnClickLi
     private void book() {
         String route = spinnerRoute.getSelectedItem().toString().trim().toLowerCase();
         String level = spinnerLevel.getSelectedItem().toString().trim().toLowerCase();
+        String price = computedPrice.getText().toString().trim().toLowerCase();
 
-//        String route = routeDropdown.getSelectedItem().toString().trim().toLowerCase();
-//        String level = levelDropdown.getSelectedItem().toString().trim().toLowerCase();
-//        String payment = paymentDropdown.getSelectedItem().toString().trim().toLowerCase();
-
-        bookTicket(route, level, MainActivity.UserName, MainActivity.UserEmail, MainActivity.id);
+        bookTicket(route, level, MainActivity.UserName, MainActivity.UserEmail, MainActivity.id, MainActivity.phone, price);
     }
 
-    private void bookTicket(String route, String level, String name, String email, String id) {
+    private void bookTicket(String route, String level, String name, String email, String id, String phone, String price) {
         class LoginUser extends AsyncTask<String, Void, String> {
             ProgressDialog loading;
             ServerConnect ruc = new ServerConnect();
@@ -164,15 +161,17 @@ public class BookingActivity extends AppCompatActivity implements View.OnClickLi
                 data.put("UserName", params[2]);
                 data.put("UserEmail", params[3]);
                 data.put("id", params[4]);
+                data.put("phone", params[5]);
+                data.put("price", params[6]);
 
-                String result = ruc.sendPostRequest(REGISTER_URL, data);
+                String result = ruc.sendPostRequest(BOOKING_URL, data);
 
                 return result;
             }
         }
 
         LoginUser ru = new LoginUser();
-        ru.execute(route, level, name, email, id);
+        ru.execute(route, level, name, email, id, phone, price);
     }
 
     @Override

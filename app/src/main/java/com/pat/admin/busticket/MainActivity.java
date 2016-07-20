@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static String UserEmail;
     public static String UserName;
     public static String id;
+    public static String phone;
 
     private Button homeSignInBtn;
     private Button homeSignUpBtn;

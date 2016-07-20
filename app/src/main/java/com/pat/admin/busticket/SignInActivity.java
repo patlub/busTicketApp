@@ -80,6 +80,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     MainActivity.UserEmail = creds[0];
                     MainActivity.UserName = creds[1];
                     MainActivity.id = creds[2];
+                    MainActivity.phone = creds[3];
                     String msg = "Welcome " + MainActivity.UserName;
                     MainActivity.isLoggedIn = true;
                     Intent i = new Intent(getApplicationContext(), BookingActivity.class);
